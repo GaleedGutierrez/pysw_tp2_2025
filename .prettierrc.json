@@ -1,0 +1,24 @@
+{
+	"plugins": ["prettier-plugin-astro"],
+	"overrides": [
+		{
+			"files": "*.jsonc",
+			"options": {
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": "*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		},
+		{
+			"files": "*.mdx",
+			"options": {
+				"useTabs": false
+			}
+		}
+	],
+	"singleAttributePerLine": true
+}
