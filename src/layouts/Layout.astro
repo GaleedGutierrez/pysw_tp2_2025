@@ -36,31 +36,47 @@ const { title, description } = Astro.props;
 		<style>
 			:root {
 				--font-fallback:
-					"Adjusted Arial Fallback", system-ui, -apple-system,
+					"Adjusted Sans-Serif Fallback", system-ui, -apple-system,
 					blinkmacsystemfont, "Segoe UI", "Noto Sans", helvetica,
 					arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-				--font-primary: "Inter", var(--font-fallback);
+				--font-primary: "Manrope", var(--font-fallback);
 			}
 			@font-face {
-				font-family: "Adjusted Arial Fallback";
-				src: local(Arial);
-				size-adjust: 104%;
-				font-size: 16px;
-				line-height: 1.6;
-				letter-spacing: 0.5px;
-				word-spacing: 0px;
+				font-family: "Adjusted Sans-Serif Fallback";
+				src: local(sans-serif);
+				letter-spacing: 0.3px;
+				word-spacing: -0.05px;
 			}
-
 			@font-face {
-				font-family: "Inter";
+				font-family: "Manrope";
 				src:
-					local("Inter"),
-					url("/fonts/Inter/InterVariable.woff2") format("woff2");
+					local("Manrope"),
+					url("/fonts/Manrope-Regular.woff2") format("woff2");
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: "Manrope";
+				src:
+					local("Manrope"),
+					url("/fonts/Manrope-Medium.woff2") format("woff2");
+				font-weight: 500;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: "Manrope";
+				src:
+					local("Manrope"),
+					url("/fonts/Manrope-Bold.woff2") format("woff2");
+				font-weight: bold;
+				font-style: normal;
 				font-display: swap;
 			}
 		</style>
 	</head>
-	<body>
+	<body class="body-lg">
 		<slot />
 	</body>
 </html>
