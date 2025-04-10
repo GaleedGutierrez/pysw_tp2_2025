@@ -1,75 +1,71 @@
-.heading-4xl {
-	font-size: var(--fs-title-4xl);
-	font-weight: var(--weight-bold);
-	line-height: var(--lh-7);
-}
-
 .heading-3xl {
 	font-size: var(--fs-title-3xl);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-6);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-3xl);
+	letter-spacing: var(--ls-title-3xl);
+	text-transform: uppercase;
 }
 
 .heading-2xl {
 	font-size: var(--fs-title-2xl);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-5);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-2xl);
+	letter-spacing: var(--ls-title-2xl);
+	text-transform: uppercase;
 }
 
 .heading-xl {
 	font-size: var(--fs-title-xl);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-4);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-xl);
+	letter-spacing: var(--ls-title-xl);
+	text-transform: uppercase;
 }
 
 .heading-lg {
 	font-size: var(--fs-title-lg);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-3);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-lg);
+	letter-spacing: var(--ls-title-lg);
+	text-transform: uppercase;
 }
 
 .heading-md {
 	font-size: var(--fs-title-md);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-3);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-md);
+	letter-spacing: var(--ls-title-md);
+	text-transform: uppercase;
 }
 
 .heading-sm {
 	font-size: var(--fs-title-sm);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-2);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-sm);
+	letter-spacing: var(--ls-title-sm);
+	text-transform: uppercase;
 }
 
 .heading-xs {
+	color: var(--text-color-tertiary);
 	font-size: var(--fs-title-xs);
-	font-weight: var(--weight-semibold);
-	line-height: var(--lh-1);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-xs);
+	letter-spacing: var(--ls-title-xs);
+	text-transform: uppercase;
 }
 
 .body-lg {
 	font-size: var(--fs-body-lg);
-	font-weight: var(--weight-normal);
-	line-height: var(--lh-3);
+	font-weight: var(--weight-medium);
+	line-height: var(--lh-body-lg);
 }
 
 .body-md {
+	color: var(--text-color-tertiary);
 	font-size: var(--fs-body-md);
 	font-weight: var(--weight-normal);
-	line-height: var(--lh-2);
-}
-
-.body-sd {
-	font-size: var(--fs-body-sm);
-	font-weight: var(--weight-normal);
-	line-height: var(--lh-1);
-}
-
-.font-fjalla {
-	font-family: "Fjalla One", var(--font-fallback);
-	font-weight: normal;
+	line-height: var(--lh-body-md);
+	letter-spacing: var(--ls-body-md);
 	text-transform: uppercase;
-}
-
-.font-opensans {
-	font-family: "Open Sans", var(--font-fallback);
 }
