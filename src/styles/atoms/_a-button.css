@@ -1,0 +1,98 @@
+.a-button {
+	padding: var(--space-4) var(--space-7);
+
+	/* .heading-xs */
+	color: var(--text-color-tertiary);
+	font-size: var(--fs-title-xs);
+	font-weight: var(--weight-bold);
+	line-height: var(--lh-title-xs);
+	letter-spacing: var(--ls-title-xs);
+	text-transform: uppercase;
+}
+
+.a-button--primary {
+	background-color: var(--background-tertiary);
+	color: var(--text-color-secondary);
+
+	&:hover {
+		background-color: var(--background-quinary);
+	}
+
+	&:active {
+		background-color: var(--background-tertiary);
+	}
+
+	&:focus-visible {
+		outline: var(--border-1) solid var(--border-secondary);
+		outline-offset: var(--space-1);
+	}
+}
+
+.a-button--secondary {
+	border: var(--border-025) solid var(--border-primary);
+	background-color: var(--background-primary);
+	color: var(--text-color-primary);
+
+	&:hover {
+		background-color: var(--background-secondary);
+		color: var(--text-color-secondary);
+	}
+
+	&:active {
+		background-color: var(--background-primary);
+		color: var(--text-color-primary);
+	}
+
+	&:focus-visible {
+		outline: var(--border-1) solid var(--border-primary);
+		outline-offset: var(--space-1);
+	}
+}
+
+.a-button--tertiary {
+	border: var(--border-025) solid var(--border-primary);
+	background-color: var(--background-secondary);
+	color: var(--text-color-secondary);
+
+	&:hover {
+		background-color: var(--background-primary);
+		color: var(--text-color-primary);
+	}
+
+	&:active {
+		background-color: var(--background-secondary);
+		color: var(--text-color-secondary);
+	}
+
+	&:focus-visible {
+		outline: var(--border-1) solid var(--border-primary);
+		outline-offset: var(--space-1);
+	}
+}
+
+.a-button--with-arrow {
+	display: flex;
+	gap: var(--space-3);
+	color: var(--text-color-primary-50p);
+
+	svg {
+		color: var(--text-color-tertiary);
+	}
+
+	&:hover {
+		color: var(--text-color-tertiary);
+	}
+
+	&:active {
+		color: var(--text-color-primary-50p);
+
+		svg {
+			color: var(--text-color-primary-50p);
+		}
+	}
+
+	&:focus-visible {
+		outline: var(--border-1) solid var(--border-secondary);
+		outline-offset: var(--space-1);
+	}
+}
