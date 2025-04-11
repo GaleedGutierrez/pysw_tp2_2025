@@ -1,0 +1,37 @@
+---
+import "./styles.css";
+
+const categories = [
+	{ id: "all", name: "Todas" },
+	{ id: "musculacion", name: "Musculación" },
+	{ id: "crossfit", name: "CrossFit" },
+	{ id: "yoga", name: "Yoga" },
+	{ id: "spinning", name: "Spinning" },
+];
+---
+
+<div class="categories-filter">
+	<h2 class="categories-title">Filtrar por categoría</h2>
+	<div class="categories-container">
+		{
+			categories.map((category) => (
+				<div class="category-item">
+					<input
+						type="radio"
+						name="category"
+						id={category.id}
+						class="category-input"
+						checked={category.id === "all"}
+						value={category.id}
+					/>
+					<label
+						for={category.id}
+						class="category-label"
+					>
+						{category.name}
+					</label>
+				</div>
+			))
+		}
+	</div>
+</div>

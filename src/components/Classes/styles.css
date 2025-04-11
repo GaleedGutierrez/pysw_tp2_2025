@@ -63,8 +63,3 @@
 .card-content p {
 	color: var(--text-color-primary-50p);
 }
-
-.card-image {
-	border-start-start-radius: var(--border-radius-2);
-	border-start-end-radius: var(--border-radius-2);
-}
