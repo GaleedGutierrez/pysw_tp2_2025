@@ -1,6 +1,7 @@
 .header {
 	position: sticky;
 	inset-block-start: 0;
+	z-index: var(--z-index-1-screen-foreground);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
