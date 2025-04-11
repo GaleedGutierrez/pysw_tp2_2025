@@ -12,29 +12,40 @@
 	--black-50p: oklch(0% 0 0 / 50%);
 	--black-40p: oklch(0% 0 0 / 40%);
 	--persian-red: oklch(55% 0.197 26.53);
+	--persian-red-light: oklch(75% 0.197 26.53);
 
 	/* Text */
-	--text-color-primary: var(--black);
-	--text-color-primary-50p: var(--black-50p);
-	--text-color-secondary: var(--white);
+	--text-color-primary: light-dark(var(--black), var(--antiflash-white));
+	--text-color-primary-50p: light-dark(var(--black-50p), var(--white-75p));
+	--text-color-secondary: light-dark(var(--white), var(--black));
 	--text-color-secondary-75p: var(--white-75p);
 	--text-color-secondary-50p: var(--white-50p);
 	--text-color-tertiary: var(--peru);
 	--text-color-quaternary: var(--chinese-dark);
-	--text-color-wrong: var(--persian-red);
+	--text-color-wrong: light-dark(
+		var(--persian-red),
+		var(--persian-red-light)
+	);
 
 	/* Background */
-	--background-primary: var(--antiflash-white);
-	--background-secondary: var(--chinese-dark);
+	--background-primary: light-dark(
+		var(--antiflash-white),
+		var(--chinese-dark)
+	);
+	--background-secondary: light-dark(
+		var(--chinese-dark),
+		var(--antiflash-white)
+	);
 	--background-tertiary: var(--peru);
 	--background-quaternary: var(--antiflash-white);
 	--background-quinary: var(--very-light-tangelo);
 
 	/* border */
-	--border-primary: var(--chinese-dark);
+	--border-primary: light-dark(var(--chinese-dark), var(--antiflash-white));
 	--border-secondary: var(--peru);
-	--border-tertiary: var(--black-40p);
-	--border-wrong: var(--persian-red);
+	--border-tertiary: light-dark(var(--black-40p), var(--white-50p));
+	--border-quaternary: light-dark(var(--black-50p), var(--white-50p));
+	--border-wrong: light-dark(var(--persian-red), var(--persian-red-light));
 
 	color-scheme: light dark;
 }

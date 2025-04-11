@@ -2,7 +2,6 @@
 	padding: var(--space-4) var(--space-7);
 
 	/* .heading-xs */
-	color: var(--text-color-tertiary);
 	font-size: var(--fs-title-xs);
 	font-weight: var(--weight-bold);
 	line-height: var(--lh-title-xs);
@@ -73,6 +72,7 @@
 .a-button--with-arrow {
 	display: flex;
 	gap: var(--space-3);
+	align-items: center;
 	color: var(--text-color-primary-50p);
 
 	svg {
@@ -94,5 +94,37 @@
 	&:focus-visible {
 		outline: var(--border-1) solid var(--border-secondary);
 		outline-offset: var(--space-1);
+	}
+}
+
+@media (hover: none) {
+	.a-button--primary {
+		&:active {
+			background-color: var(--background-quinary);
+		}
+	}
+
+	.a-button--secondary {
+		&:active {
+			background-color: var(--background-secondary);
+			color: var(--text-color-secondary);
+		}
+	}
+
+	.a-button--tertiary {
+		&:active {
+			background-color: var(--background-primary);
+			color: var(--text-color-primary);
+		}
+	}
+
+	.a-button--with-arrow {
+		&:active {
+			color: var(--text-color-tertiary);
+
+			svg {
+				color: var(--text-color-tertiary);
+			}
+		}
 	}
 }
