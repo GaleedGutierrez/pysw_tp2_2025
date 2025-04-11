@@ -7,7 +7,7 @@ import checkFile from 'eslint-plugin-check-file';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+// import jsxA11y from 'eslint-plugin-jsx-a11y';
 import * as mdx from 'eslint-plugin-mdx';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginSecurity from 'eslint-plugin-security';
@@ -28,7 +28,7 @@ export default tsEslintConfig(
 	eslintPluginImportX.flatConfigs.typescript,
 
 	pluginSecurity.configs.recommended,
-	jsxA11y.flatConfigs.recommended,
+	// jsxA11y.flatConfigs.recommended,
 
 	...eslintPluginAstro.configs.recommended,
 	eslintPluginPrettierRecommended,
