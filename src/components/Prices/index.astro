@@ -1,0 +1,161 @@
+---
+import "./styles.css";
+---
+
+<section class="prices-section">
+	<div class="container">
+		<h2>Nuestros Planes</h2>
+
+		<div class="toggle-container">
+			<span class="toggle-label toggle-active">Mensual</span>
+			<label class="toggle-switch">
+				<input
+					type="checkbox"
+					id="billing-toggle"
+				/>
+				<span class="slider"></span>
+			</label>
+			<span class="toggle-label"
+				>Anual <span class="discount">-20%</span></span
+			>
+		</div>
+
+		<div class="price-cards">
+			<!-- Plan Básico -->
+			<div class="price-card">
+				<div class="card-header">
+					<h3>Básico</h3>
+					<p class="price">
+						<span class="currency">$</span>
+						<span class="amount monthly">2500</span>
+						<span class="amount annual">2000</span>
+						<span class="period">/mes</span>
+					</p>
+				</div>
+				<div class="card-body">
+					<ul class="features-list">
+						<li>
+							Acceso en horario reducido
+							<div class="tooltip">
+								<span class="tooltip-icon">i</span>
+								<span class="tooltip-text"
+									>Acceso de lunes a viernes de 10:00 a 16:00</span
+								>
+							</div>
+						</li>
+						<li>Acceso a áreas básicas</li>
+						<li>1 clase grupal por semana</li>
+						<li class="not-included">Sin entrenador personal</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<a
+						href="/contacto"
+						class="btn-select"
+						>Seleccionar</a
+					>
+				</div>
+			</div>
+
+			<!-- Plan Estándar -->
+			<div class="price-card popular">
+				<p class="popular-badge">Más popular</p>
+				<div class="card-header">
+					<h3>Estándar</h3>
+					<p class="price">
+						<span class="currency">$</span>
+						<span class="amount monthly">3500</span>
+						<span class="amount annual">2800</span>
+						<span class="period">/mes</span>
+					</p>
+				</div>
+				<div class="card-body">
+					<ul class="features-list">
+						<li>
+							Acceso ilimitado
+							<div class="tooltip">
+								<span class="tooltip-icon">i</span>
+								<span class="tooltip-text"
+									>Acceso 24/7 todos los días</span
+								>
+							</div>
+						</li>
+						<li>Acceso a todas las áreas</li>
+						<li>3 clases grupales por semana</li>
+						<li>1 sesión con entrenador personal/mes</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<a
+						href="/contacto"
+						class="btn-select"
+						>Seleccionar</a
+					>
+				</div>
+			</div>
+
+			<!-- Plan Premium -->
+			<div class="price-card">
+				<div class="card-header">
+					<h3>Premium</h3>
+					<p class="price">
+						<span class="currency">$</span>
+						<span class="amount monthly">4500</span>
+						<span class="amount annual">3600</span>
+						<span class="period">/mes</span>
+					</p>
+				</div>
+				<div class="card-body">
+					<ul class="features-list">
+						<li>Acceso ilimitado</li>
+						<li>Acceso a todas las áreas</li>
+						<li>
+							Clases grupales ilimitadas
+							<div class="tooltip">
+								<span class="tooltip-icon">i</span>
+								<span class="tooltip-text"
+									>Acceso a todas las clases disponibles sin
+									restricción</span
+								>
+							</div>
+						</li>
+						<li>4 sesiones con entrenador personal/mes</li>
+						<li>Plan nutricional personalizado</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<a
+						href="/contacto"
+						class="btn-select"
+						>Seleccionar</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const billingToggle = document.getElementById("billing-toggle");
+		const monthlyLabel = document.querySelector(
+			".toggle-label:first-child",
+		);
+		const annualLabel = document.querySelector(".toggle-label:last-child");
+
+		billingToggle.addEventListener("change", () => {
+			document.body.classList.toggle(
+				"annual-billing",
+				billingToggle.checked,
+			);
+			monthlyLabel.classList.toggle(
+				"toggle-active",
+				!billingToggle.checked,
+			);
+			annualLabel.classList.toggle(
+				"toggle-active",
+				billingToggle.checked,
+			);
+		});
+	});
+</script>
