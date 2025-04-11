@@ -1,0 +1,75 @@
+.gallery-container {
+	max-width: 1200px;
+	padding: 2rem 1rem;
+	margin: 0 auto;
+}
+
+.gallery-container h2 {
+	text-align: center;
+}
+
+.gallery-masonry {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-auto-rows: 10px;
+	grid-gap: 15px;
+}
+
+.gallery-item {
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px oklch(0% 0% 0 / 10%);
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px oklch(0% 0% 0 / 20%);
+}
+
+.gallery-item img {
+	display: block;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+/* Asignamos alturas específicas para crear el efecto masonry */
+.item-1 {
+	grid-row-end: span 25;
+}
+
+.item-2 {
+	grid-row-end: span 20;
+}
+
+.item-3 {
+	grid-row-end: span 30;
+}
+
+.item-4 {
+	grid-row-end: span 22;
+}
+
+.item-5 {
+	grid-row-end: span 28;
+}
+
+.item-6 {
+	grid-row-end: span 24;
+}
+
+/* Media queries para hacer la galería responsive */
+@media screen and (width <= 768px) {
+	.gallery-masonry {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+}
+
+@media screen and (width <= 480px) {
+	.gallery-masonry {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+}

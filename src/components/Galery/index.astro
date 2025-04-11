@@ -1,0 +1,32 @@
+---
+// Importar las rutas de las imágenes
+const classImages = [
+	"/images/classes/crossfit.jpeg",
+	"/images/classes/funcional.jpeg",
+	"/images/classes/hiit.jpeg",
+	"/images/classes/spinning.jpg",
+	"/images/classes/strong.jpeg",
+	"/images/classes/yoga.jpg",
+];
+---
+
+<section class="gallery-container">
+	<h2>Nuestra Galería</h2>
+	<div class="gallery-masonry">
+		{
+			classImages.map((image, index) => (
+				<div class={`gallery-item item-${index + 1}`}>
+					<img
+						src={image}
+						alt={`Imagen de clase ${index + 1}`}
+						loading="lazy"
+					/>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	@import "./styles.css";
+</style>
