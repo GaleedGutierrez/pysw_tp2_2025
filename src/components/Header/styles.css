@@ -1,0 +1,31 @@
+.header {
+	position: sticky;
+	inset-block-start: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--space-7);
+	border-block-end: var(--border-025) solid var(--border-quaternary);
+	background-color: var(--background-primary);
+	color: var(--text-color-primary);
+}
+
+.header__menu-icon {
+	&:hover {
+		color: var(--text-color-tertiary);
+	}
+
+	&:active {
+		color: var(--text-color-secondary);
+	}
+}
+
+@media (hover: none) {
+	.header__menu-icon {
+		&:active {
+			color: var(--text-color-tertiary);
+		}
+	}
+}
+
+/* Haceme un media query para los que soportan hover */

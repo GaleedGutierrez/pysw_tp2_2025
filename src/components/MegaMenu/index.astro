@@ -1,0 +1,66 @@
+---
+import "./styles.css";
+
+import BurgerMenuIcon from "@public/icons/icon-hamburger.svg";
+---
+
+<div class="mega-menu-container">
+	<label
+		class="menu-toggle-label"
+		for="menu-toggle"
+	>
+		<span class="is-sr-only">Menú</span>
+		<input
+			class="menu-toggle"
+			id="menu-toggle"
+			type="checkbox"
+		/>
+		<BurgerMenuIcon class="header__menu-icon" />
+	</label>
+	<nav class="mega-menu">
+		<div class="mega-menu__content">
+			<div class="mega-menu__section">
+				<h6 class="mega-menu__title">Clases</h6>
+				<ul class="mega-menu__list">
+					<li><a href="/clases/grupales">Clases grupales</a></li>
+					<li>
+						<a href="/clases/personalizadas"
+							>Clases personalizadas</a
+						>
+					</li>
+					<li><a href="/clases/horarios">Horarios</a></li>
+					<li><a href="/clases/reservas">Reservar clase</a></li>
+				</ul>
+			</div>
+
+			<div class="mega-menu__section">
+				<h6 class="mega-menu__title">Entrenadores</h6>
+				<ul class="mega-menu__list">
+					<li>
+						<a href="/entrenadores/equipo">Nuestro equipo</a>
+					</li>
+					<li>
+						<a href="/entrenadores/especialidades">Especialidades</a
+						>
+					</li>
+					<li>
+						<a href="/entrenadores/certificaciones"
+							>Certificaciones</a
+						>
+					</li>
+				</ul>
+			</div>
+
+			<div class="mega-menu__section">
+				<h6 class="mega-menu__title">Precios</h6>
+				<ul class="mega-menu__list">
+					<li><a href="/precios/membresias">Membresías</a></li>
+					<li><a href="/precios/promociones">Promociones</a></li>
+					<li>
+						<a href="/precios/planes">Planes personalizados</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
