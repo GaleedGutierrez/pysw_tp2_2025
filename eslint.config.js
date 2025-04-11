@@ -30,7 +30,7 @@ export default tsEslintConfig(
 	pluginSecurity.configs.recommended,
 	jsxA11y.flatConfigs.recommended,
 
-	...eslintPluginAstro.configs.all,
+	...eslintPluginAstro.configs.recommended,
 	eslintPluginPrettierRecommended,
 	...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
 	...eslintPluginJsonc.configs['flat/prettier'],
