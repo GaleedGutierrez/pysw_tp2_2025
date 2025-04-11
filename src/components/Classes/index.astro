@@ -83,11 +83,16 @@ const { showTitle = true, title = "Clases Destacadas" } = Astro.props;
 					class="class-card"
 					data-category={classItem.category}
 				>
-					<img
-						class="card-image"
-						src={classItem.imageSrc}
-						alt={classItem.imageAlt}
-					/>
+					<div class="card-image-container">
+						<img
+							class="card-image"
+							src={classItem.imageSrc}
+							alt={classItem.imageAlt}
+						/>
+						<div class="image-overlay">
+							<span class="class-category">{classItem.name}</span>
+						</div>
+					</div>
 					<div class="card-content">
 						<h3>{classItem.name}</h3>
 						<p>{classItem.description}</p>
