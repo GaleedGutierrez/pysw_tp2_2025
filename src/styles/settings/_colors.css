@@ -13,6 +13,9 @@
 	--black-40p: oklch(0% 0 0 / 40%);
 	--persian-red: oklch(55% 0.197 26.53);
 	--persian-red-light: oklch(75% 0.197 26.53);
+	--golden-yellow: oklch(75% 0.15 85); /* Star rating color */
+	--teal: oklch(60% 0.12 195); /* Secondary color for gradients */
+	--shadow-color: oklch(0% 0 0 / 10%); /* For box shadows */
 
 	/* Text */
 	--text-color-primary: light-dark(var(--black), var(--antiflash-white));
@@ -26,6 +29,7 @@
 		var(--persian-red),
 		var(--persian-red-light)
 	);
+	--text-color-muted: light-dark(oklch(50% 0 0), oklch(70% 0 0));
 
 	/* Background */
 	--background-primary: light-dark(
@@ -39,6 +43,8 @@
 	--background-tertiary: var(--peru);
 	--background-quaternary: var(--antiflash-white);
 	--background-quinary: var(--very-light-tangelo);
+	--background-light: light-dark(var(--lotion), oklch(25% 0 0));
+	--background-muted: light-dark(oklch(90% 0 0), oklch(25% 0 0));
 
 	/* border */
 	--border-primary: light-dark(var(--chinese-dark), var(--antiflash-white));
@@ -46,6 +52,20 @@
 	--border-tertiary: light-dark(var(--black-40p), var(--white-50p));
 	--border-quaternary: light-dark(var(--black-50p), var(--white-50p));
 	--border-wrong: light-dark(var(--persian-red), var(--persian-red-light));
+
+	/* Component variables */
+	--color-text-heading: var(--text-color-primary);
+	--color-text-body: var(--text-color-primary);
+	--color-text-muted: var(--text-color-muted);
+	--color-background: var(--background-primary);
+	--color-background-light: var(--background-light);
+	--color-background-muted: var(--background-muted);
+	--color-primary: var(--peru);
+	--color-primary-dark: oklch(58% 0.13 48.59); /* Darker version of peru */
+	--color-secondary: var(--teal);
+	--color-accent: var(--very-light-tangelo);
+	--color-warning: var(--golden-yellow);
+	--color-shadow: var(--shadow-color);
 
 	color-scheme: light dark;
 }

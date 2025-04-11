@@ -1,0 +1,168 @@
+---
+import "./styles.css";
+
+interface Trainer {
+	name: string;
+	role: string;
+	image: string;
+	rating: number;
+	skills: {
+		name: string;
+		value: number;
+	}[];
+}
+
+const trainers: Trainer[] = [
+	{
+		name: "Alex Rodríguez",
+		role: "Entrenador de CrossFit",
+		image: "/images/trainers/trainer1.jpeg",
+		rating: 4.5,
+		skills: [
+			{ name: "Fuerza", value: 90 },
+			{ name: "Resistencia", value: 85 },
+			{ name: "Flexibilidad", value: 70 },
+		],
+	},
+	{
+		name: "Laura Martínez",
+		role: "Instructora de Yoga",
+		image: "/images/trainers/trainer2.jpeg",
+		rating: 5,
+		skills: [
+			{ name: "Flexibilidad", value: 95 },
+			{ name: "Equilibrio", value: 90 },
+			{ name: "Técnica", value: 85 },
+		],
+	},
+	{
+		name: "Evelin Gutierrez",
+		role: "Entrenadora Funcional",
+		image: "/images/trainers/trainer4.jpeg",
+		rating: 4,
+		skills: [
+			{ name: "Coordinación", value: 80 },
+			{ name: "Potencia", value: 85 },
+			{ name: "Velocidad", value: 90 },
+		],
+	},
+	{
+		name: "María González",
+		role: "Instructora de HIIT",
+		image: "/images/trainers/trainer3.jpeg",
+		rating: 4.5,
+		skills: [
+			{ name: "Resistencia", value: 95 },
+			{ name: "Intensidad", value: 90 },
+			{ name: "Fuerza", value: 75 },
+		],
+	},
+];
+
+// Helper function to generate star ratings
+function generateStars(rating: number) {
+	const stars = [];
+	const fullStars = Math.floor(rating);
+	const hasHalfStar = rating % 1 !== 0;
+
+	for (let index = 1; index <= 5; index++) {
+		if (index <= fullStars) {
+			stars.push("full");
+		} else if (index === fullStars + 1 && hasHalfStar) {
+			stars.push("half");
+		} else {
+			stars.push("empty");
+		}
+	}
+
+	return stars;
+}
+---
+
+<section class="trainers-section">
+	<div class="container">
+		<h2 class="section-title">Nuestro Equipo de Entrenadores</h2>
+		<p class="section-description">
+			Contamos con entrenadores profesionales certificados para ayudarte a
+			alcanzar tus metas
+		</p>
+
+		<div class="trainers-grid">
+			{
+				trainers.map((trainer) => (
+					<div class="trainer-card">
+						<div class="card-inner">
+							<div class="card-front">
+								<img
+									src={trainer.image}
+									alt={trainer.name}
+									class="trainer-image"
+								/>
+								<div class="trainer-info-preview">
+									<h3>{trainer.name}</h3>
+									<p>{trainer.role}</p>
+									<div class="rating">
+										{generateStars(trainer.rating).map(
+											(type) => (
+												<span class={`star ${type}`}>
+													★
+												</span>
+											),
+										)}
+									</div>
+								</div>
+							</div>
+							<div class="card-back">
+								<h3>{trainer.name}</h3>
+								<p class="role">{trainer.role}</p>
+
+								<div class="skills">
+									{trainer.skills.map((skill) => (
+										<div class="skill">
+											<div class="skill-name">
+												{skill.name}
+											</div>
+											<div class="skill-bar-container">
+												<div
+													class="skill-bar"
+													style={`width: ${skill.value}%`}
+												>
+													<span class="skill-percentage">
+														{skill.value}%
+													</span>
+												</div>
+											</div>
+										</div>
+									))}
+								</div>
+
+								<div class="rating-detail">
+									<div class="rating-label">Valoración:</div>
+									<div class="rating">
+										{generateStars(trainer.rating).map(
+											(type) => (
+												<span class={`star ${type}`}>
+													★
+												</span>
+											),
+										)}
+										<span class="rating-value">
+											({trainer.rating})
+										</span>
+									</div>
+								</div>
+
+								<button
+									type="button"
+									class="trainer-contact"
+								>
+									Contactar
+								</button>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
