@@ -7,6 +7,10 @@
     "not ie 11",
     "not chrome <= 109",
     "not ios_saf <= 16.7",
-    "not samsung <= 27"
+    "not samsung <= 27",
+    "not and_ff <= 135",
+    "not firefox <= 135",
+    "not ios_saf <= 18.3",
+    "not safari <= 18.3"
   ]
 }
