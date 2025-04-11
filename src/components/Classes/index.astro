@@ -1,0 +1,72 @@
+---
+import "./styles.css";
+
+import IconArrowRight from "@public/icons/icon-arrow-right.svg";
+
+// Datos de las clases con tipado explícito
+interface ClassItem {
+	name: string;
+	imageSrc: string;
+	imageAlt: string;
+	description: string;
+}
+
+const classes: ClassItem[] = [
+	{
+		name: "Musculación",
+		imageSrc: "/images/classes/strong.jpeg",
+		imageAlt: "Persona entrenando con pesas",
+		description:
+			"Entrenamiento enfocado en el desarrollo y definición muscular con pesas y máquinas especializadas.",
+	},
+	{
+		name: "CrossFit",
+		imageSrc: "/images/classes/crossfit.jpeg",
+		imageAlt: "Mujeres levantando una barra",
+		description:
+			"Entrenamiento funcional de alta intensidad que combina movimientos de diferentes disciplinas.",
+	},
+	{
+		name: "Yoga",
+		imageSrc: "/images/classes/yoga.jpg",
+		imageAlt: "Persona practicando yoga",
+		description:
+			"Práctica que conecta cuerpo, mente y espíritu a través de posturas, respiración y meditación.",
+	},
+	{
+		name: "Spinning",
+		imageSrc: "/images/classes/spinning.jpg",
+		imageAlt: "Clase de spinning con bicicletas estáticas",
+		description:
+			"Entrenamiento cardiovascular intenso en bicicleta estática con música motivadora.",
+	},
+];
+---
+
+<section
+	class="classes-section o-container"
+	id="classes"
+>
+	<h2 class="classes-title">Clases Destacadas</h2>
+	<div class="classes__container">
+		{
+			classes.map((classItem) => (
+				<div class="class-card">
+					<img
+						class="card-image"
+						src={classItem.imageSrc}
+						alt={classItem.imageAlt}
+					/>
+					<div class="card-content">
+						<h3>{classItem.name}</h3>
+						<p>{classItem.description}</p>
+						<button class="class-link a-button a-button--with-arrow">
+							Ver más
+							<IconArrowRight />
+						</button>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
