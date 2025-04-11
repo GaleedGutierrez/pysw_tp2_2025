@@ -1,0 +1,126 @@
+.footer {
+	padding: var(--space-12) 0 var(--space-8) 0;
+	margin-top: var(--space-20);
+}
+
+.footer__container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	gap: var(--space-8);
+	padding: 0 var(--space-6);
+	margin-bottom: var(--space-12);
+}
+
+.footer__section {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer__title {
+	margin-bottom: var(--space-4);
+	color: var(--text-color-tertiary);
+	font-size: var(--fs-title-md);
+}
+
+.footer__text {
+	margin-bottom: var(--space-6);
+	line-height: 1.6;
+}
+
+.footer__address {
+	margin-bottom: var(--space-6);
+	font-style: normal;
+	line-height: 1.6;
+}
+
+.footer__contact {
+	margin-top: var(--space-3);
+}
+
+.footer__map {
+	overflow: hidden;
+	width: 100%;
+	border-radius: var(--border-radius-2);
+	margin-top: var(--space-4);
+}
+
+.footer__hours {
+	padding: 0;
+	margin: 0 0 var(--space-8) 0;
+	list-style: none;
+}
+
+.footer__hours li {
+	margin-bottom: var(--space-2);
+}
+
+.footer__hours span {
+	font-weight: var(--weight-medium);
+}
+
+.footer__social-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-4);
+	margin-top: var(--space-2);
+}
+
+.footer__social-links a {
+	display: grid;
+	place-items: center;
+	height: 4.4rem;
+	width: 4.4rem;
+	border-radius: var(--border-radius-circle);
+	background-color: var(--background-tertiary);
+	transition:
+		transform var(--time-002) ease-in-out,
+		background-color var(--time-002) ease;
+}
+
+.footer__social-links a:hover {
+	background-color: var(--background-quinary);
+	transform: translateY(-3px);
+}
+
+.footer__bottom {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--space-8) var(--space-6);
+	border-top: var(--border-025) solid var(--border-quaternary);
+	font-size: var(--fs-body-md);
+}
+
+.footer__nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-6);
+}
+
+.footer__link {
+	transition: color var(--time-001) ease;
+}
+
+.footer__link:hover {
+	color: var(--text-color-tertiary);
+}
+
+.newsletter-form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	width: 100%;
+}
+
+.newsletter-button {
+	display: flex;
+	gap: var(--space-2);
+	align-items: center;
+	align-self: flex-start;
+}
+
+.newsletter-button svg {
+	height: 1.6rem;
+	width: 1.6rem;
+}
