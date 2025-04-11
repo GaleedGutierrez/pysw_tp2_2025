@@ -12,5 +12,9 @@
     "not firefox <= 135",
     "not ios_saf <= 18.3",
     "not safari <= 18.3"
-  ]
+  ],
+  "hints": {
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/paint": "off"
+  }
 }
