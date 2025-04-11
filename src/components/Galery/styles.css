@@ -18,7 +18,7 @@
 .gallery-item {
 	overflow: hidden;
 	border-radius: 8px;
-	box-shadow: 0 4px 8px oklch(0% 0% 0 / 10%);
+	box-shadow: 0 4px 8px oklch(0% 0 0 / 10%);
 	transition:
 		transform 0.3s ease,
 		box-shadow 0.3s ease;
@@ -26,7 +26,7 @@
 
 .gallery-item:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 8px 16px oklch(0% 0% 0 / 20%);
+	box-shadow: 0 8px 16px oklch(0% 0 0 / 20%);
 }
 
 .gallery-item img {

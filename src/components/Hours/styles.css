@@ -1,0 +1,87 @@
+/* Responsive table styles for schedule hours */
+.schedule-table {
+	width: 100%;
+	padding: 0;
+	border: 1px solid oklch(83% 0 0);
+	border-collapse: collapse;
+	margin: 0;
+	table-layout: fixed;
+}
+
+.schedule-table caption {
+	margin: 0.5em 0 0.75em;
+}
+
+.schedule-table tr {
+	padding: 0.35em;
+	border: 1px solid oklch(87% 0 0);
+	background-color: oklch(97% 0.003 0);
+}
+
+.schedule-table tr:nth-child(even) {
+	background-color: oklch(94% 0.003 0);
+}
+
+.schedule-table th,
+.schedule-table td {
+	padding: 0.625em;
+	text-align: center;
+}
+
+.schedule-table th {
+	background-color: oklch(33% 0 0);
+	color: white;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+@media screen and (width <= 600px) {
+	.schedule-table {
+		border: 0;
+	}
+
+	.schedule-table thead {
+		position: absolute;
+		overflow: hidden;
+		height: 1px;
+		width: 1px;
+		padding: 0;
+		border: none;
+		margin: -1px;
+		clip: rect(0 0 0 0);
+	}
+
+	.schedule-table tr {
+		display: block;
+		border-bottom: 3px solid oklch(87% 0 0);
+		margin-bottom: 0.625em;
+	}
+
+	.schedule-table td {
+		display: block;
+		border-bottom: 1px solid oklch(87% 0 0);
+		text-align: right;
+	}
+
+	.schedule-table td::before {
+		float: left;
+		text-transform: uppercase;
+		content: attr(data-label);
+	}
+
+	.schedule-table td:last-child {
+		border-bottom: 0;
+	}
+}
+
+/* Additional styles for the schedule section */
+.schedule-container {
+	max-width: 1200px;
+	padding: 2rem 0;
+	margin: 0 auto;
+}
+
+.schedule-heading {
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
