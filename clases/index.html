@@ -1,0 +1,1201 @@
+<!doctype html>
+<html
+	lang="es"
+	data-astro-cid-sckkx6r4
+>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			content="width=device-width"
+			name="viewport"
+		/>
+		<link
+			href="/favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			href="/favicon.ico"
+			rel="shortcut icon"
+		/>
+		<meta
+			content="Infinity Gym es un gimnasio de entrenamiento funcional y crossfit en la ciudad San Salvador de Jujuy, Jujuy, Argentina."
+			name="description"
+		/>
+		<title>Clases</title>
+		<style>
+			.categories-filter {
+				margin: 2rem 0;
+			}
+			.categories-title {
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+				text-align: center;
+			}
+			.categories-container {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				justify-content: center;
+				margin-bottom: 2rem;
+			}
+			.category-item {
+				position: relative;
+			}
+			.category-input {
+				position: absolute;
+				cursor: pointer;
+				opacity: 0;
+			}
+			.category-label {
+				display: inline-block;
+				padding: 0.5rem 1.5rem;
+				border: 2px solid var(--color-accent);
+				border-radius: 2rem;
+				background-color: var(--color-accent-light);
+				color: var(--color-accent);
+				font-weight: 500;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+			.category-input:checked + .category-label {
+				background-color: var(--color-accent);
+				color: var(--color-light);
+			}
+			.category-input:focus-visible + .category-label {
+				outline: 2px solid var(--color-accent);
+				outline-offset: 2px;
+			}
+			#all:checked ~ .classes-section .class-card {
+				display: flex;
+			}
+			.categories-filter:has(#musculacion:checked)
+				~ .classes-section
+				.class-card:not([data-category="musculacion"]) {
+				display: none;
+			}
+			.categories-filter:has(#crossfit:checked)
+				~ .classes-section
+				.class-card:not([data-category="crossfit"]) {
+				display: none;
+			}
+			.categories-filter:has(#yoga:checked)
+				~ .classes-section
+				.class-card:not([data-category="yoga"]) {
+				display: none;
+			}
+			.categories-filter:has(#spinning:checked)
+				~ .classes-section
+				.class-card:not([data-category="spinning"]) {
+				display: none;
+			}
+			.gallery-container[data-astro-cid-cmo22kfg] {
+				max-width: 1200px;
+				padding: 2rem 1rem;
+				margin: 0 auto;
+			}
+			.gallery-container[data-astro-cid-cmo22kfg]
+				h2[data-astro-cid-cmo22kfg] {
+				text-align: center;
+			}
+			.gallery-masonry[data-astro-cid-cmo22kfg] {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+				grid-auto-rows: 10px;
+				grid-gap: 15px;
+			}
+			.gallery-item[data-astro-cid-cmo22kfg] {
+				overflow: hidden;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px #0000001a;
+				transition:
+					transform 0.3s ease,
+					box-shadow 0.3s ease;
+			}
+			.gallery-item[data-astro-cid-cmo22kfg]:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 16px #0003;
+			}
+			.gallery-item[data-astro-cid-cmo22kfg]
+				img[data-astro-cid-cmo22kfg] {
+				display: block;
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+			}
+			.item-1[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 25;
+			}
+			.item-2[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 20;
+			}
+			.item-3[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 30;
+			}
+			.item-4[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 22;
+			}
+			.item-5[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 28;
+			}
+			.item-6[data-astro-cid-cmo22kfg] {
+				grid-row-end: span 24;
+			}
+			@media screen and (width <= 768px) {
+				.gallery-masonry[data-astro-cid-cmo22kfg] {
+					grid-template-columns: repeat(
+						auto-fill,
+						minmax(200px, 1fr)
+					);
+				}
+			}
+			@media screen and (width <= 480px) {
+				.gallery-masonry[data-astro-cid-cmo22kfg] {
+					grid-template-columns: repeat(
+						auto-fill,
+						minmax(150px, 1fr)
+					);
+				}
+			}
+			.schedule-table {
+				width: 100%;
+				padding: 0;
+				border: 1px solid var(--border-tertiary);
+				border-collapse: collapse;
+				margin: 0;
+				table-layout: fixed;
+			}
+			.schedule-table caption {
+				margin: 0.5em 0 0.75em;
+			}
+			.schedule-table tr {
+				padding: 0.35em;
+				border: 1px solid var(--border-tertiary);
+				background-color: light-dark(
+					oklch(97% 0.003 0),
+					oklch(25% 0 0)
+				);
+				color: var(--text-color-primary);
+			}
+			.schedule-table tr:nth-child(2n) {
+				background-color: light-dark(
+					oklch(94% 0.003 0),
+					oklch(20% 0 0)
+				);
+			}
+			.schedule-table th,
+			.schedule-table td {
+				padding: 0.625em;
+				text-align: center;
+			}
+			.schedule-table th {
+				background-color: var(--color-primary);
+				color: var(--text-color-secondary);
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+			}
+			@media screen and (width <= 600px) {
+				.schedule-table {
+					border: 0;
+				}
+				.schedule-table thead {
+					position: absolute;
+					overflow: hidden;
+					height: 1px;
+					width: 1px;
+					padding: 0;
+					border: none;
+					margin: -1px;
+					clip: rect(0 0 0 0);
+				}
+				.schedule-table tr {
+					display: block;
+					border-bottom: 3px solid var(--border-tertiary);
+					margin-bottom: 0.625em;
+				}
+				.schedule-table td {
+					display: block;
+					border-bottom: 1px solid var(--border-tertiary);
+					text-align: right;
+				}
+				.schedule-table td:before {
+					float: left;
+					text-transform: uppercase;
+					content: attr(data-label);
+				}
+				.schedule-table td:last-child {
+					border-bottom: 0;
+				}
+			}
+			.schedule-container {
+				max-width: 1200px;
+				padding: 2rem 0;
+				margin: 0 auto;
+			}
+			.schedule-heading {
+				margin-bottom: 1.5rem;
+				text-align: center;
+			}
+			.classes-section {
+				padding: var(--space-32) var(--space-6);
+			}
+			.classes-title {
+				position: relative;
+				margin-block-end: var(--space-12);
+				text-align: center;
+			}
+			.classes-title:after {
+				position: absolute;
+				inset-block-end: -0.8rem;
+				inset-inline-start: 50%;
+				height: 0.3rem;
+				width: 20rem;
+				border-radius: var(--border-radius-2);
+				background: var(--peru);
+				transform: translate(-50%);
+				content: "";
+			}
+			.classes__container {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(31.5rem, 1fr));
+				gap: var(--space-5);
+			}
+			.class-card {
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+				height: 100%;
+				border-radius: var(--border-radius-2);
+				background-color: var(--background-primary);
+				transition: all 0.3s ease-in-out;
+				box-shadow: 0 0.5rem 1.5rem
+					light-dark(oklch(0% 0 0 / 10%), oklch(100% 0 0 / 10%));
+			}
+			.class-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 1.5rem 3rem
+					light-dark(oklch(0% 0 0 / 20%), oklch(100% 0 0 / 20%));
+			}
+			.class-card .card-image-container {
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+			}
+			.class-card .card-image {
+				object-fit: cover;
+				height: 220px;
+				width: 100%;
+				transition: transform 0.5s ease;
+			}
+			.class-card:hover .card-image {
+				transform: scale(1.1);
+			}
+			.class-card .image-overlay {
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				width: 100%;
+				background: linear-gradient(to bottom, #0000001a, #0000007f);
+				transition: opacity 0.3s ease;
+				opacity: 0;
+			}
+			.class-card:hover .image-overlay {
+				opacity: 1;
+			}
+			.class-card .class-category {
+				padding: 0.8rem 1.5rem;
+				border: 2px solid white;
+				border-radius: var(--border-radius-2);
+				background-color: #0006;
+				color: #fff;
+				font-size: 1.8rem;
+				font-weight: 700;
+				transition: all 0.3s ease;
+				transform: translateY(20px);
+				opacity: 0;
+			}
+			.class-card:hover .class-category {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			.card-content {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				justify-content: space-between;
+				padding: var(--space-7);
+			}
+			.card-content h3 {
+				margin: 0;
+				transition: color 0.2s ease;
+			}
+			.class-card:hover .card-content h3 {
+				color: var(--text-color-tertiary);
+			}
+			.card-content p {
+				color: var(--text-color-primary-50p);
+			}
+			.class-link {
+				align-self: flex-start;
+				margin-top: var(--space-4);
+			}
+		</style>
+		<link
+			rel="stylesheet"
+			href="/_astro/blog.BhFL_d0V.css"
+		/>
+	</head>
+	<body
+		class="body-lg"
+		data-astro-cid-sckkx6r4
+	>
+		<header class="header">
+			<a
+				class="heading-md"
+				href="/"
+				>Infinity</a
+			>
+			<div class="mega-menu-container">
+				<label
+					class="menu-toggle-label"
+					for="menu-toggle"
+				>
+					<span class="is-sr-only">Menú</span>
+					<input
+						class="menu-toggle"
+						id="menu-toggle"
+						type="checkbox"
+					/>
+					<svg
+						width="16"
+						height="15"
+						class="header__menu-icon"
+					>
+						<g
+							fill="currentColor"
+							fill-rule="evenodd"
+						>
+							<path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
+						</g>
+					</svg>
+				</label>
+				<nav class="mega-menu">
+					<div class="mega-menu__content">
+						<div class="mega-menu__section">
+							<h6 class="mega-menu__title">Clases</h6>
+							<ul class="mega-menu__list">
+								<li><a href="/clases/">Clases grupales</a></li>
+								<li>
+									<a href="/clases/">Clases personalizadas</a>
+								</li>
+								<li><a href="/clases/#hours">Horarios</a></li>
+								<li><a href="/clases/">Reservar clase</a></li>
+							</ul>
+						</div>
+						<div class="mega-menu__section">
+							<h6 class="mega-menu__title">Entrenadores</h6>
+							<ul class="mega-menu__list">
+								<li>
+									<a href="/entrenadores/">Nuestro equipo</a>
+								</li>
+								<li>
+									<a href="/entrenadores/">Especialidades</a>
+								</li>
+								<li>
+									<a href="/entrenadores/">Certificaciones</a>
+								</li>
+							</ul>
+						</div>
+						<div class="mega-menu__section">
+							<h6 class="mega-menu__title">Precios</h6>
+							<ul class="mega-menu__list">
+								<li><a href="/precios/">Membresías</a></li>
+								<li><a href="/precios/">Promociones</a></li>
+								<li>
+									<a href="/precios/"
+										>Planes personalizados</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div class="mega-menu__section">
+							<h6 class="mega-menu__title">
+								<a href="/contacto/">Contacto</a>
+							</h6>
+						</div>
+						<div class="mega-menu__section">
+							<h6 class="mega-menu__title">
+								<a href="/blog/">Blog</a>
+							</h6>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<div class="o-container filter-container">
+				<div class="categories-filter">
+					<h2 class="categories-title">Filtrar por categoría</h2>
+					<div class="categories-container">
+						<div class="category-item">
+							<input
+								type="radio"
+								name="category"
+								id="all"
+								class="category-input"
+								checked
+								value="all"
+							/>
+							<label
+								for="all"
+								class="category-label"
+							>
+								Todas
+							</label>
+						</div>
+						<div class="category-item">
+							<input
+								type="radio"
+								name="category"
+								id="musculacion"
+								class="category-input"
+								value="musculacion"
+							/>
+							<label
+								for="musculacion"
+								class="category-label"
+							>
+								Musculación
+							</label>
+						</div>
+						<div class="category-item">
+							<input
+								type="radio"
+								name="category"
+								id="crossfit"
+								class="category-input"
+								value="crossfit"
+							/>
+							<label
+								for="crossfit"
+								class="category-label"
+							>
+								CrossFit
+							</label>
+						</div>
+						<div class="category-item">
+							<input
+								type="radio"
+								name="category"
+								id="yoga"
+								class="category-input"
+								value="yoga"
+							/>
+							<label
+								for="yoga"
+								class="category-label"
+							>
+								Yoga
+							</label>
+						</div>
+						<div class="category-item">
+							<input
+								type="radio"
+								name="category"
+								id="spinning"
+								class="category-input"
+								value="spinning"
+							/>
+							<label
+								for="spinning"
+								class="category-label"
+							>
+								Spinning
+							</label>
+						</div>
+					</div>
+				</div>
+				<section
+					class="classes-section o-container"
+					id="classes"
+				>
+					<h2 class="classes-title">Nuestras Clases</h2>
+					<div class="classes__container">
+						<div
+							class="class-card"
+							data-category="musculacion"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/strong.jpeg"
+									alt="Persona entrenando con pesas"
+								/>
+								<div class="image-overlay">
+									<span class="class-category"
+										>Musculación</span
+									>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>Musculación</h3>
+								<p>
+									Entrenamiento enfocado en el desarrollo y
+									definición muscular con pesas y máquinas
+									especializadas.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							class="class-card"
+							data-category="crossfit"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/crossfit.jpeg"
+									alt="Mujeres levantando una barra"
+								/>
+								<div class="image-overlay">
+									<span class="class-category">CrossFit</span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>CrossFit</h3>
+								<p>
+									Entrenamiento funcional de alta intensidad
+									que combina movimientos de diferentes
+									disciplinas.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							class="class-card"
+							data-category="yoga"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/yoga.jpg"
+									alt="Persona practicando yoga"
+								/>
+								<div class="image-overlay">
+									<span class="class-category">Yoga</span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>Yoga</h3>
+								<p>
+									Práctica que conecta cuerpo, mente y
+									espíritu a través de posturas, respiración y
+									meditación.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							class="class-card"
+							data-category="spinning"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/spinning.jpg"
+									alt="Clase de spinning con bicicletas estáticas"
+								/>
+								<div class="image-overlay">
+									<span class="class-category">Spinning</span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>Spinning</h3>
+								<p>
+									Entrenamiento cardiovascular intenso en
+									bicicleta estática con música motivadora.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							class="class-card"
+							data-category="musculacion"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/funcional.jpeg"
+									alt="Personas en entrenamiento funcional"
+								/>
+								<div class="image-overlay">
+									<span class="class-category"
+										>Funcional</span
+									>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>Funcional</h3>
+								<p>
+									Entrenamiento que mejora la capacidad del
+									cuerpo para realizar movimientos cotidianos
+									con eficacia.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							class="class-card"
+							data-category="crossfit"
+						>
+							<div class="card-image-container">
+								<img
+									class="card-image"
+									src="/images/classes/hiit.jpeg"
+									alt="Clase de entrenamiento de alta intensidad"
+								/>
+								<div class="image-overlay">
+									<span class="class-category">HIIT</span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3>HIIT</h3>
+								<p>
+									Entrenamiento intervalado de alta intensidad
+									que alterna períodos cortos de ejercicio
+									intenso con recuperación.
+								</p>
+								<button
+									class="class-link a-button a-button--with-arrow"
+								>
+									Ver más
+									<svg
+										width="8"
+										height="12"
+									>
+										<path
+											d="M1.322 1l5 5-5 5"
+											stroke="currentColor"
+											stroke-width="2"
+											fill="none"
+											fill-rule="evenodd"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<section
+				class="gallery-container"
+				data-astro-cid-cmo22kfg
+			>
+				<h2 data-astro-cid-cmo22kfg>Nuestra Galería</h2>
+				<div
+					class="gallery-masonry"
+					data-astro-cid-cmo22kfg
+				>
+					<div
+						class="gallery-item item-1"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/crossfit.jpeg"
+							alt="Imagen de clase 1"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+					<div
+						class="gallery-item item-2"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/funcional.jpeg"
+							alt="Imagen de clase 2"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+					<div
+						class="gallery-item item-3"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/hiit.jpeg"
+							alt="Imagen de clase 3"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+					<div
+						class="gallery-item item-4"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/spinning.jpg"
+							alt="Imagen de clase 4"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+					<div
+						class="gallery-item item-5"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/strong.jpeg"
+							alt="Imagen de clase 5"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+					<div
+						class="gallery-item item-6"
+						data-astro-cid-cmo22kfg
+					>
+						<img
+							src="/images/classes/yoga.jpg"
+							alt="Imagen de clase 6"
+							loading="lazy"
+							data-astro-cid-cmo22kfg
+						/>
+					</div>
+				</div>
+			</section>
+			<section
+				class="schedule-container"
+				id="hours"
+			>
+				<h2 class="schedule-heading">Horarios Semanales</h2>
+				<table class="schedule-table">
+					<caption>
+						Horarios de Clases
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Día</th>
+							<th scope="col">Mañana</th>
+							<th scope="col">Tarde</th>
+							<th scope="col">Noche</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-label="Día">Lunes</td>
+							<td data-label="Mañana">
+								Yoga (8:00 - 9:30)<br />Spinning (10:00 - 11:00)
+							</td>
+							<td data-label="Tarde">
+								Funcional (15:00 - 16:30)<br />HIIT (17:00 -
+								18:00)
+							</td>
+							<td data-label="Noche">
+								Crossfit (19:30 - 21:00)<br />Strong (21:30 -
+								22:30)
+							</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Martes</td>
+							<td data-label="Mañana">
+								Funcional (8:00 - 9:30)<br />Strong (10:00 -
+								11:00)
+							</td>
+							<td data-label="Tarde">
+								Yoga (15:00 - 16:30)<br />Crossfit (17:00 -
+								18:00)
+							</td>
+							<td data-label="Noche">
+								HIIT (19:30 - 20:30)<br />Spinning (21:00 -
+								22:00)
+							</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Miércoles</td>
+							<td data-label="Mañana">
+								Crossfit (8:00 - 9:30)<br />HIIT (10:00 - 11:00)
+							</td>
+							<td data-label="Tarde">
+								Strong (15:00 - 16:00)<br />Spinning (16:30 -
+								17:30)
+							</td>
+							<td data-label="Noche">
+								Yoga (19:00 - 20:30)<br />Funcional (21:00 -
+								22:00)
+							</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Jueves</td>
+							<td data-label="Mañana">
+								Strong (8:00 - 9:00)<br />Yoga (9:30 - 11:00)
+							</td>
+							<td data-label="Tarde">
+								Spinning (15:00 - 16:00)<br />Crossfit (16:30 -
+								18:00)
+							</td>
+							<td data-label="Noche">
+								Funcional (19:00 - 20:00)<br />HIIT (20:30 -
+								21:30)
+							</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Viernes</td>
+							<td data-label="Mañana">
+								HIIT (8:00 - 9:00)<br />Funcional (9:30 - 10:30)
+							</td>
+							<td data-label="Tarde">
+								Yoga (15:00 - 16:30)<br />Strong (17:00 - 18:00)
+							</td>
+							<td data-label="Noche">
+								Spinning (19:00 - 20:00)<br />Crossfit (20:30 -
+								22:00)
+							</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Sábado</td>
+							<td data-label="Mañana">
+								Spinning (9:00 - 10:00)<br />Strong (10:30 -
+								11:30)
+							</td>
+							<td data-label="Tarde">
+								HIIT (15:00 - 16:00)<br />Yoga (16:30 - 18:00)
+							</td>
+							<td data-label="Noche">-</td>
+						</tr>
+						<tr>
+							<td data-label="Día">Domingo</td>
+							<td data-label="Mañana">Yoga (10:00 - 11:30)</td>
+							<td data-label="Tarde">Spinning (12:00 - 14:00)</td>
+							<td data-label="Noche">-</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container o-container">
+				<!-- Newsletter Subscription Form -->
+				<div class="footer__section footer__newsletter">
+					<h3 class="footer__title">
+						Suscríbete a nuestro Newsletter
+					</h3>
+					<p class="footer__text">
+						Recibe noticias, promociones y eventos exclusivos
+						directamente en tu bandeja de entrada.
+					</p>
+					<form
+						class="newsletter-form"
+						action="#"
+						method="POST"
+					>
+						<label
+							class="a-input__label"
+							for="email-newsletter"
+						>
+							<span>Tu email</span>
+							<input
+								class="a-input"
+								id="email-newsletter"
+								name="email"
+								type="email"
+								placeholder="correo@ejemplo.com"
+								required
+							/>
+							<span class="a-input__error"
+								>Por favor, ingresa un correo electrónico
+								válido</span
+							>
+						</label>
+						<button
+							class="a-button a-button--primary newsletter-button"
+							type="submit"
+						>
+							Suscribirme
+							<svg
+								width="8"
+								height="12"
+							>
+								<path
+									d="M1.322 1l5 5-5 5"
+									stroke="currentColor"
+									stroke-width="2"
+									fill="none"
+									fill-rule="evenodd"
+								/>
+							</svg>
+						</button>
+					</form>
+				</div>
+				<!-- Location and Contact Information -->
+				<div class="footer__section footer__location">
+					<h3 class="footer__title">Encuéntranos</h3>
+					<address class="footer__address">
+						<p>Av. Libertad 1234</p>
+						<p>San Salvador de Jujuy, Jujuy</p>
+						<p>Argentina</p>
+						<p class="footer__contact">Tel: +54 (388) 123-4567</p>
+						<p class="footer__contact">
+							Email: info@infinitygym.com
+						</p>
+					</address>
+					<!-- Embedded Map -->
+					<div class="footer__map">
+						<iframe
+							src="https://www.openstreetmap.org/export/embed.html?bbox=-65.31,-24.20,-65.27,-24.17&layer=mapnik"
+							width="100%"
+							height="200"
+							style="
+								border: var(--border-025) solid
+									var(--border-tertiary);
+								border-radius: var(--border-radius-2);
+							"
+							title="Mapa ubicación Infinity Gym"
+							loading="lazy"
+						></iframe>
+					</div>
+				</div>
+				<!-- Hours and Social Media -->
+				<div class="footer__section footer__social">
+					<h3 class="footer__title">Horarios</h3>
+					<ul class="footer__hours">
+						<li><span>Lunes a Viernes:</span> 7:00 - 22:00</li>
+						<li><span>Sábados:</span> 9:00 - 18:00</li>
+						<li><span>Domingos:</span> 10:00 - 14:00</li>
+					</ul>
+					<h3 class="footer__title">Síguenos</h3>
+					<ul class="footer__social-links o-ui-list--horizontal">
+						<li>
+							<a
+								href="https://instagram.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Síguenos en Instagram"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect
+										x="2"
+										y="2"
+										width="20"
+										height="20"
+										rx="5"
+										ry="5"
+									></rect>
+									<path
+										d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+									></path>
+									<line
+										x1="17.5"
+										y1="6.5"
+										x2="17.51"
+										y2="6.5"
+									></line>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://facebook.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Síguenos en Facebook"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+									></path>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://twitter.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Síguenos en Twitter"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+									></path>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://youtube.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Síguenos en YouTube"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+									></path>
+									<polygon
+										points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+									></polygon>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<p class="footer__copyright">
+					© 2025 Infinity GYM. Todos los derechos reservados.
+				</p>
+				<nav class="footer__nav">
+					<ul class="o-ui-list--horizontal">
+						<li>
+							<a
+								href="/"
+								class="footer__link"
+								>Términos y Condiciones</a
+							>
+						</li>
+						<li>
+							<a
+								href="/"
+								class="footer__link"
+								>Política de Privacidad</a
+							>
+						</li>
+						<li>
+							<a
+								href="/"
+								class="footer__link"
+								>Contacto</a
+							>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
