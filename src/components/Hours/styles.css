@@ -2,7 +2,7 @@
 .schedule-table {
 	width: 100%;
 	padding: 0;
-	border: 1px solid oklch(83% 0 0);
+	border: 1px solid var(--border-tertiary);
 	border-collapse: collapse;
 	margin: 0;
 	table-layout: fixed;
@@ -14,12 +14,13 @@
 
 .schedule-table tr {
 	padding: 0.35em;
-	border: 1px solid oklch(87% 0 0);
-	background-color: oklch(97% 0.003 0);
+	border: 1px solid var(--border-tertiary);
+	background-color: light-dark(oklch(97% 0.003 0), oklch(25% 0 0));
+	color: var(--text-color-primary);
 }
 
 .schedule-table tr:nth-child(even) {
-	background-color: oklch(94% 0.003 0);
+	background-color: light-dark(oklch(94% 0.003 0), oklch(20% 0 0));
 }
 
 .schedule-table th,
@@ -29,8 +30,8 @@
 }
 
 .schedule-table th {
-	background-color: oklch(33% 0 0);
-	color: white;
+	background-color: var(--color-primary);
+	color: var(--text-color-secondary);
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 }
@@ -53,13 +54,13 @@
 
 	.schedule-table tr {
 		display: block;
-		border-bottom: 3px solid oklch(87% 0 0);
+		border-bottom: 3px solid var(--border-tertiary);
 		margin-bottom: 0.625em;
 	}
 
 	.schedule-table td {
 		display: block;
-		border-bottom: 1px solid oklch(87% 0 0);
+		border-bottom: 1px solid var(--border-tertiary);
 		text-align: right;
 	}
 
